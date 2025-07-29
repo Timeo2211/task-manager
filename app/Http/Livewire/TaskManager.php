@@ -24,7 +24,7 @@ class TaskManager extends Component
     public function toggleCompleted($taskId)
     {
         $task = Task::withTrashed()->findOrFail($taskId);
-        $task->is_completed = !$task->is_completed; // ✅ Correction ici
+        $task->is_completed = !$task->is_completed;
         $task->save();
     }
 
@@ -37,8 +37,8 @@ class TaskManager extends Component
     public function getTasksProperty()
     {
         return match ($this->filter) {
-            'active' => Task::where('is_completed', false)->get(),   // ✅ Correction ici
-            'completed' => Task::where('is_completed', true)->get(), // ✅ Correction ici
+            'active' => Task::where('is_completed', false)->get(),
+            'completed' => Task::where('is_completed', true)->get(),
             'deleted' => Task::onlyTrashed()->get(),
             default => Task::all(),
         };
