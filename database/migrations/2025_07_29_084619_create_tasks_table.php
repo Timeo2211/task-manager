@@ -7,25 +7,32 @@ use Illuminate\Support\Facades\Schema;
 class CreateTasksTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécutée lors de la migration : création de la table 'tasks'
      *
      * @return void
      */
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
+            // Clé primaire auto-incrémentée
             $table->id();
+
+            // Titre de la tâche (obligatoire par défaut)
             $table->string('title');
+
+            // Statut de complétion (true = terminée, false = en cours)
             $table->boolean('is_completed')->default(false);
-            $table->softDeletes(); // Active la suppression douce
+
+            // Colonne 'deleted_at' pour les suppressions logiques (SoftDeletes)
+            $table->softDeletes();
+
+            // Colonnes 'created_at' et 'updated_at' automatiquement gérées par Laravel
             $table->timestamps();
         });
     }
 
-
-
     /**
-     * Reverse the migrations.
+     * Inverser la migration : suppression de la table 'tasks'
      *
      * @return void
      */

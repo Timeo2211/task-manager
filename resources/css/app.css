@@ -1,3 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base;       /* Importe les styles de base de Tailwind CSS (reset, typographie, etc.) */
+@tailwind components; /* Importe les composants utilitaires personnalisables (boutons, formulaires, etc.) */
+@tailwind utilities;  /* Importe toutes les classes utilitaires (margin, padding, couleurs, etc.) */
